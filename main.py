@@ -50,11 +50,11 @@ for ticker_symbol in tickers:
                 ticker_symbol: data['close'].values
             })
             all_data.append(df)
-            print(f"    Загружено {len(df)} записей")
+            print(f"Загружено {len(df)} записей")
         else:
-            print(f"    Данные для {ticker_symbol} не получены")
+            print(f"Данные для {ticker_symbol} не получены")
     except Exception as e:
-        print(f"    Ошибка при загрузке {ticker_symbol}: {e}")
+        print(f"Ошибка при загрузке {ticker_symbol}: {e}")
 
 if not all_data:
     raise ValueError("Не удалось загрузить данные ни для одного тикера")
@@ -69,8 +69,8 @@ merged_data.set_index('date', inplace=True)
 
 merged_data.to_csv('russian_stocks_daily_close.csv', index=True)
 print(f"\nЦены закрытия сохранены в 'russian_stocks_daily_close.csv'")
-print(f"   Период: с {dates.iloc[0]} по {dates.iloc[-1]}")
-print(f"   Всего дней: {len(merged_data)}")
+print(f"Период: с {dates.iloc[0]} по {dates.iloc[-1]}")
+print(f"Всего дней: {len(merged_data)}")
 
 # ------------------------------
 # 2. Расчёт логарифмических доходностей
@@ -196,7 +196,7 @@ tda_df = pd.DataFrame(tda_results).set_index('date')
 tda_df.index = pd.to_datetime(tda_df.index.astype(str))
 tda_df.to_csv('tda_indicators.csv')
 
-print(f"   TDA рассчитан для {len(tda_df)} точек")
+print(f"TDA рассчитан для {len(tda_df)} точек")
 
 # ============================================================
 # 5. ВИЗУАЛИЗАЦИИ
